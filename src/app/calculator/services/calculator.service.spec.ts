@@ -158,4 +158,18 @@ describe('CalculatorService', () => {
     expect(service.resultText()).toBe('1');
   });
 
+  it('should handle max length correctly', () => {
+    // Si intentamos introducir más de 10 caracteres, el resultado debe quedar truncado a 10 caracteres
+    for(let i=0; i < 10; i++) {
+      service.constructNumber('1');
+    }
+    expect(service.resultText().length).toBe(10);
+
+    service.constructNumber('2');
+    expect(service.resultText().length).toBe(10);
+
+    service.constructNumber('3');
+    expect(service.resultText().length).toBe(10);
+  });
+  
 });
